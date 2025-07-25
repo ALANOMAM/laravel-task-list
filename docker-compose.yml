@@ -43,4 +43,5 @@ services:
        - ./src:/var/www/html       
      ports:
        - "5173:5173"  # <-- expose Vite's dev server port
-     command: ["npm", "run", "dev"]   
+     entrypoint: ["npm"]   # <-- This line ensures it runs `npm` instead of Linux `install`
+     command: ["run", "dev"]   

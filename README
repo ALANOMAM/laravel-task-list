@@ -13,9 +13,9 @@
     DB_USERNAME=myuser
     DB_PASSWORD=mypassword
 
- #3-Start the app containers, the npm manages bootstrap
+ #3-Start the app containers, except bootstrap
 
-    docker-compose up -d --build server php mysql npm
+    docker-compose up -d --build server php mysql 
 
 
  #4-Fix possible permission issues with the app containers still up
@@ -26,12 +26,14 @@
  #5-Generate the app key with the app containers still up
 
     docker-compose exec php php artisan key:generate
-
+   
  #6-Enter the php conatiner and run the migrations 
  
-   docker exec -it <container-id> sh
-   php artisan migrate 
+   docker-compose exec php php artisan migrate
 
+ # Set up the boostrap part 
+   docker-compose run --rm npm install
+   docker-compose up npm
 
  #7-The app should be visible on "http://localhost:8080"
 
