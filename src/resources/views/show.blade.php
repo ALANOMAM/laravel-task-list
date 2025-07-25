@@ -2,9 +2,8 @@
 @extends('layouts.app')
 
 
-@section('title')
-<h1>SINGLE TASK PAGE</h1>
-@endsection
+@section('title','SINGLE TASK PAGE')
+
 
 @section('content')
 <p>{{$task->title}}</p>

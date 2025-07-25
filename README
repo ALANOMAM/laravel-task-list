@@ -33,7 +33,7 @@
 
  # Set up the boostrap part 
    docker-compose run --rm npm install
-   docker-compose up npm
+   docker-compose up -d npm
 
  #7-The app should be visible on "http://localhost:8080"
 

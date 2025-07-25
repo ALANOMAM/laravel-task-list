@@ -1,23 +1,34 @@
 
 @extends('layouts.app')
 
-@section('title')
-<h1>TASK LIST TEMPLATE</h1>
-@endsection
+@section('title', 'TASK LIST PAGE')
 
 @section('content')
-<div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Task title</th>
+      <th scope="col">Task description</th>
+      <th scope="col">Task long description</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
     @if(count($tasks))
      @foreach($tasks as $task)
-        <a href="{{ route('tasks.show', ['id' => $task->id] ) }}">{{$task->title}}</a>
+     <tr>
+      <th scope="row">{{$task->id}}</th>
+      <td>{{$task->title}}</td>
+      <td>{{$task->description}}</td>
+      <td>{{$task->long_description}}</td>
+      <td><a class="btn btn-primary" href="{{ route('tasks.show', ['id' => $task->id] ) }}">{{$task->title}}</a></td>
+    </tr>
      @endforeach
-       
-    @else
-       <div>There are no tasks</div>
-    @endif
+     @endif
+  </tbody>
+</table>
 
-</div>
-
-<button type="button" class="btn btn-primary">Primary</button>
 
 @endsection
