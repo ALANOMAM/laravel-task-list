@@ -4,7 +4,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite --host" 
+        "dev": "vite --host"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
@@ -19,6 +19,7 @@
         "vite": "^7.0.4"
     },
     "dependencies": {
-        "@popperjs/core": "^2.11.8"
+        "@popperjs/core": "^2.11.8",
+        "bootstrap-icons": "^1.13.1"
     }
 }
