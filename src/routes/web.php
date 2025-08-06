@@ -1,11 +1,26 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
-//added by me 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use App\Models\Task;
+
+
+Route::get('/', function () {
+    return redirect()->route('tasks.index');
+});
+
+Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+Route::get('/tasks/{id}', [TaskController::class, 'show'])->name('tasks.show');
+Route::get('/tasks/{id}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
+Route::put('/tasks/{id}', [TaskController::class, 'update'])->name('tasks.update');
+Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.delete');
+
+// //added by me 
+// use Illuminate\Http\Request;
+// use Illuminate\Http\Response;
+// use App\Models\Task;
 
 // // FAKE DATABASE START
 // class Task
@@ -62,53 +77,4 @@ use App\Models\Task;
 // ];
 
 // FAKE DATABASE END
-
-
-
-
-Route::get('/tasks', function () {
-    return view('index',[
-    'tasks'=>  Task::all()
-    ]);
-    // return view('welcome');
-    // return 'Main page';
-})->name('tasks.index');
-
-
-Route::get('tasks/create',function(){
-    return view('create');
-})->name('tasks.create');
-
-Route::get('tasks/{id}', function($id)  {
-    return view('show', [
-        'task'=>  Task::findOrFail($id)
-    ]);
-})->name('tasks.show');
-
-
-Route::get('/', function(){
-    return redirect()->route('tasks.index');
-});
-
-Route::post('/tasks', function(Request $request){
-
-//if everything is validated correctly, i will get a data array with my info inside
-$data = $request->validate([
-'title' => 'required|max:255',
-'description'=>'required',
-'long_description'=>'required',
-]);
-
-//we create a new task
-$task = new Task;
-$task->title = $data['title'];
-$task->description = $data['description'];
-$task->long_description = $data['long_description'];
-
-//save changes to the database
-$task->save();
-
-return redirect()->route('tasks.show',['id' => $task->id]);
-
-})->name('tasks.store');
 

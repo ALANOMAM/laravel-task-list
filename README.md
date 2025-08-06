@@ -1,3 +1,13 @@
+# ✨ Brief description
+
+- This project is a simple TASK MANAGEMENT TOOL which gives you the ability to add new tasks, modifiy and delete tasks.
+
+- No words are hardcoded, so even though the primary language is italian, if you go to src/resources/lang and delete the "ita" folder, the whole project will be in english.
+
+- I used bootstrap and a little css for styling.
+
+- You also have a way to FLAG THE TASK AS COMPLETED OR NOT.Once a task is flaged as completed, a tick appears near it so it can be seen when amongst all the other tasks, and if you click on the "show" button to see it in more details, the card containing its information is green, different from the gray color it has when the task is still to be completed
+
 # ⚙️ Setup Instructions
 
 ## 1-When inside the project folder run
