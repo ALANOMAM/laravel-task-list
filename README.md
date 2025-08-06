@@ -37,9 +37,11 @@
 
 ### `docker-compose exec php php artisan key:generate`
 
-## 6-Enter the php conatiner and run the migrations
+## 6-Enter the php conatiner and run the migrations and optionally seeds
 
 ### `docker-compose exec php php artisan migrate`
+
+### `docker-compose exec php php artisan db:seed`
 
 ## 7-Set up the boostrap part
 
